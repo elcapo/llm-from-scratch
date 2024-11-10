@@ -7,6 +7,13 @@ class SimpleTokenizer(BaseTokenizer):
     """
     Implements a simple text tokenizer.
     """
+    def __init__(self, source: List[str] = [], preprocessor: Preprocessor = Preprocessor()):
+        vocabulary = sorted(set(source))
+        vocabulary.extend(["<|endoftext|>", "<|unk|>"])
+        self.str_to_int = {s: i for i, s in enumerate(vocabulary)}
+        self.int_to_str = {i: s for i, s in enumerate(vocabulary)}
+        self.preprocessor = preprocessor
+    
     def encode(self, text: str) -> List[int]:
         preprocessed = self.preprocessor.preprocess(text)
         preprocessed = [s if s in self.str_to_int else "<|unk|>" for s in preprocessed]
