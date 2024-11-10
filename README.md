@@ -2,9 +2,9 @@
 
 This repository contains my own implementation of the code snippets that appear in [Sebastian Raschka](https://github.com/rasbt)'s: **Build a Large Language Model (from Scratch)** book.
 
-It is part of my follow up of the sessions of the study group organized by [Santi Viquez](https://www.santiviquez.com) around the book.
+It is part of my follow up of the sessions of the study group organized by [Santi Viquez](https://www.santiviquez.com) around the book. More information can be found in its Discord channel: [AI from scratch](https://discord.com/channels/1299408818681286699/).
 
-I opted for a object oriented version where classes are created in files (see the [scratch](scratch) folder) as I found that it is easier to test.
+Although these type of books are traditionally followed with Jupyter notebooks, I opted for a object oriented version where classes are created in files (see the [scratch/](scratch/) folder) as I found that it is easier to test.
 
 ## Installation
 
