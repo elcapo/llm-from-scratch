@@ -15,6 +15,53 @@ git clone https://github.com/elcapo/llm-from-scratch
 cd llm-from-scratch
 ```
 
+## Usage
+
+### Preprocessor
+
+The preprocessor takes a big chunk of text and returns a list of strings (typically words) where spaces have been removed.
+
+```python
+from scratch.tokenizers.preprocessor import Preprocessor
+
+preprocessor = Preprocessor()
+preprocessor.preprocess('Hello beautiful world!')
+
+# Returns
+['Hello', 'beautiful', 'world']
+```
+
+### Tokenizers
+
+The tokenizers are classes with a `encode` and a `decode` method.
+
+#### Simple Tokenizer
+
+The simple tokenizer is an easy to read tokenizer which code has no dependencies and does the job done.
+
+```python
+from scratch.tokenizers.simple_tokenizer import SimpleTokenizer
+
+vocabulary = ['I', 'like', 'what']
+tokenizer = SimpleTokenizer(vocabulary)
+
+tokenizer.encode('I like what I like') # Returns: [0, 1, 2, 0, 1]
+tokenizer.decode([0, 1, 2, 0, 1]) # Returns: 'I like what I like'
+```
+
+#### Tiktoken Tokenizer
+
+The tiktoken tokenizer uses OpenAI's [tiktoken](https://github.com/openai/tiktoken).
+
+```python
+from scratch.tokenizers.tiktoken_tokenizer import TiktokenTokenizer
+
+tokenizer = TiktokenTokenizer()
+
+tokenizer.encode('I like what I like') # Returns: [40, 588, 644, 314, 588]
+tokenizer.decode([40, 588, 644, 314, 588]) # Returns: 'I like what I like'
+```
+
 ## Virtual Environment
 
 Before installing the dependencies, it is recommended to create and activate a virtual environment.
