@@ -33,7 +33,10 @@ preprocessor.preprocess('Hello beautiful world!')
 
 ### Tokenizers
 
-The tokenizers are classes with a `encode` and a `decode` method.
+The tokenizers are classes with a `encode` and a `decode` method where:
+
+- the `encode` method receives a text and transforms it into a vector of numbers,
+- the `decode` method receives a vector of numbers returned by the encoding function and transforms it back into the original text.
 
 #### Simple Tokenizer
 
@@ -60,6 +63,69 @@ tokenizer = TiktokenTokenizer()
 
 tokenizer.encode('I like what I like') # Returns: [40, 588, 644, 314, 588]
 tokenizer.decode([40, 588, 644, 314, 588]) # Returns: 'I like what I like'
+```
+
+### Dataset and Dataloader
+
+#### Dataset
+
+The dataset class prepares a text for using it to train a Large Language Model to "guess the next token". To do so, it gives us access to a given source text through a window where we always see two parts of the text:
+
+- the one we'll feed the model as its input
+- the one the model will see as the result
+
+For instance, from the sentence **How to build a Large Language Model**, we could have:
+
+- How to build a Large Language
+- to build a Large Language **Model**
+
+```python
+from scratch.gpt_dataset import GptDataset
+from scratch.tokenizers.tiktoken_tokenizer import TiktokenTokenizer
+
+text = 'How to build a Large Language Model from scratch'
+dataset = GptDataset(text, TiktokenTokenizer(), max_length=5)
+
+for pairs in dataset:
+    input = pairs[0].tolist()
+    target = pairs[1].tolist()
+    print("Input:", tokenizer.decode(input))
+    print("Target:", tokenizer.decode(target), "\n")
+
+# Input: How to build a Large
+# Target:  to build a Large Language
+#
+# Input:  to build a Large Language
+# Target:  build a Large Language Model
+#
+# Input:  build a Large Language Model
+# Target:  a Large Language Model from
+#
+# Input:  a Large Language Model from
+# Target:  Large Language Model from scratch
+```
+
+#### Dataloader
+
+The dataloader helper prepares an iterator that traverses a given dataset and helps us preparing batches for the training phase.
+
+```python
+from scratch.dataloader import create_dataloader
+from scratch.tokenizers.tiktoken_tokenizer import TiktokenTokenizer
+
+tokenizer = TiktokenTokenizer()
+dataloader = create_dataloader(
+    'This repository can be installed as a regular Python project',
+    batch_size=2,
+    max_length=4,
+    stride=1,
+    shuffle=False)
+
+for batch in dataloader:
+    input = batch[0].tolist()
+    target = batch[1].tolist()
+    print(tokenizer.decode(input[0]), "/", tokenizer.decode(input[1]))
+    print(tokenizer.decode(target[0]), "/", tokenizer.decode(target[1]), "\n")
 ```
 
 ## Virtual Environment
