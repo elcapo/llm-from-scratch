@@ -12,9 +12,9 @@ class GptDataset(Dataset):
         return (len(self.token_ids) - self.max_length) // self.stride
     
     def __getitem__(self, index):
-        if index + self.max_length + 1 >= len(self.token_ids):
-            raise IndexError('list index out of range')
         step = index * self.stride
+        if step + self.max_length + 1 > len(self.token_ids):
+            raise IndexError('list index out of range')
         return (
             tensor(self.token_ids[step : step + self.max_length]),
             tensor(self.token_ids[step + 1 : step + self.max_length + 1])
