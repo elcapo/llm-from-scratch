@@ -16,6 +16,6 @@ class GptDataset(Dataset):
             raise IndexError('list index out of range')
         step = index * self.stride
         return (
-            self.token_ids[step : step + self.max_length],
-            self.token_ids[step + 1 : step + self.max_length + 1]
+            tensor(self.token_ids[step : step + self.max_length]),
+            tensor(self.token_ids[step + 1 : step + self.max_length + 1])
         )
