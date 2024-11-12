@@ -87,22 +87,15 @@ text = 'How to build a Large Language Model from scratch'
 dataset = GptDataset(text, TiktokenTokenizer(), max_length=5)
 
 for pairs in dataset:
-    input = pairs[0].tolist()
+    start = pairs[0].tolist()
     target = pairs[1].tolist()
-    print("Input:", tokenizer.decode(input))
-    print("Target:", tokenizer.decode(target), "\n")
+    print("Start:", tokenizer.decode(start), ">",
+        "Target:", tokenizer.decode(target))
 
-# Input: How to build a Large
-# Target:  to build a Large Language
-#
-# Input:  to build a Large Language
-# Target:  build a Large Language Model
-#
-# Input:  build a Large Language Model
-# Target:  a Large Language Model from
-#
-# Input:  a Large Language Model from
-# Target:  Large Language Model from scratch
+# Start: How to build a Large > Target:  to build a Large Language
+# Start:  to build a Large Language > Target:  build a Large Language Model
+# Start:  build a Large Language Model > Target:  a Large Language Model from
+# Start:  a Large Language Model from > Target:  Large Language Model from scratch
 ```
 
 #### Dataloader
@@ -121,11 +114,27 @@ dataloader = create_dataloader(
     stride=1,
     shuffle=False)
 
-for batch in dataloader:
-    input = batch[0].tolist()
+for n, batch in enumerate(dataloader):
+    start = batch[0].tolist()
     target = batch[1].tolist()
-    print(tokenizer.decode(input[0]), "/", tokenizer.decode(input[1]))
-    print(tokenizer.decode(target[0]), "/", tokenizer.decode(target[1]), "\n")
+
+    print("Batch", n + 1)
+
+    print("Start:", tokenizer.decode(start[0]), ">",
+        "Target:", tokenizer.decode(target[0]))
+
+    print("Start:", tokenizer.decode(start[1]), ">",
+        "Target:", tokenizer.decode(target[1]))
+
+# Batch 1
+# Start: This repository can be > Target:  repository can be installed
+# Start:  repository can be installed > Target:  can be installed as
+# Batch 2
+# Start:  can be installed as > Target:  be installed as a
+# Start:  be installed as a > Target:  installed as a regular
+# Batch 3
+# Start:  installed as a regular > Target:  as a regular Python
+# Start:  as a regular Python > Target:  a regular Python project
 ```
 
 ## Virtual Environment
