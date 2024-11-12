@@ -15,6 +15,21 @@ git clone https://github.com/elcapo/llm-from-scratch
 cd llm-from-scratch
 ```
 
+## Virtual Environment
+
+Before installing the dependencies, it is recommended to create and activate a virtual environment.
+
+```python
+# Create a virtual environment in the `.venv` folder
+python -m venv .venv
+
+# Activate the new virtual environment
+source .venv/bin/activate
+
+# Install the dependencies
+pip install -r requirements.txt
+```
+
 ## Usage
 
 ### Preprocessor
@@ -135,21 +150,6 @@ for n, batch in enumerate(dataloader):
 # Batch 3
 # Start:  installed as a regular > Target:  as a regular Python
 # Start:  as a regular Python > Target:  a regular Python project
-```
-
-## Virtual Environment
-
-Before installing the dependencies, it is recommended to create and activate a virtual environment.
-
-```python
-# Create a virtual environment in the `.venv` folder
-python -m venv .venv
-
-# Activate the new virtual environment
-source .venv/bin/activate
-
-# Install the dependencies
-pip install -r requirements.txt
 ```
 
 ## Tests
