@@ -6,6 +6,8 @@ It is part of my follow up of the sessions of the study group organized by [Sant
 
 Although these type of books are traditionally followed with Jupyter notebooks, I opted for a object oriented version where classes are created in files (see the [scratch/](scratch/) folder) as I found that it is easier to test.
 
+If you are interested in a Jupyter notebook version of the code from the book, the author himself has created a wonderful [LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) repository.
+
 ## Installation
 
 This repository can be installed as a regular Python project, only that I don't plan to upload it to the Python Package Index as it's meant for pedagogical purposes, rather than for production use cases.
