@@ -80,7 +80,7 @@ For instance, from the sentence **How to build a Large Language Model**, we coul
 - to build a Large Language **Model**
 
 ```python
-from scratch.gpt_dataset import GptDataset
+from scratch.dataset import Dataset
 from scratch.tokenizers.tiktoken_tokenizer import TiktokenTokenizer
 
 text = 'How to build a Large Language Model from scratch'

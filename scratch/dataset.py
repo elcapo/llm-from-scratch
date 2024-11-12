@@ -2,7 +2,7 @@ from torch import tensor
 from torch.utils.data import Dataset, DataLoader
 from .tokenizers.base_tokenizer import BaseTokenizer
 
-class GptDataset(Dataset):
+class Dataset(Dataset):
     def __init__(self, text: str, tokenizer: BaseTokenizer, max_length: int = 1024, stride: int = 1):
         self.token_ids = tokenizer.encode(text)
         self.max_length = max_length
