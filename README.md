@@ -8,6 +8,15 @@ Although these type of books are traditionally followed with Jupyter notebooks, 
 
 If you are interested in a Jupyter notebook version of the code from the book, the author himself has created a wonderful [LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) repository.
 
+## Completion
+
+- [ ] Chapter 2: Working with text data
+- [ ] Chapter 3: Coding attention mechanisms
+- [ ] Chapter 4: Implementing a GPT model from scratch
+- [ ] Chapter 5: Pretraining on unlabeled data
+- [ ] Chapter 6: Fine-tuning for classification
+- [ ] Chapter 7: Fine-tuning to follow instructions
+
 ## Installation
 
 This repository can be installed as a regular Python project, only that I don't plan to upload it to the Python Package Index as it's meant for pedagogical purposes, rather than for production use cases.
