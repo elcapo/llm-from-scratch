@@ -10,7 +10,7 @@ If you are interested in a Jupyter notebook version of the code from the book, t
 
 ## Completion
 
-- [ ] Chapter 2: Working with text data
+- [x] Chapter 2: Working with text data
 - [ ] Chapter 3: Coding attention mechanisms
 - [ ] Chapter 4: Implementing a GPT model from scratch
 - [ ] Chapter 5: Pretraining on unlabeled data
