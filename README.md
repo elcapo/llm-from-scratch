@@ -4,9 +4,11 @@ This repository contains my own implementation of the code snippets that appear 
 
 It is part of my follow up of the sessions of the study group organized by [Santi Viquez](https://www.santiviquez.com) around the book. More information can be found in its Discord channel: [AI from scratch](https://discord.com/channels/1299408818681286699/).
 
-Although these type of books are traditionally followed with Jupyter notebooks, I opted for a object oriented version where classes are created in files (see the [scratch/](scratch/) folder) as I found that it is easier to test.
+> [!NOTE]
+> Although these type of books are traditionally followed with Jupyter notebooks, I opted for a object oriented version where classes are created in files (see the [scratch/](scratch/) folder) as I found that it is easier to test.
 
-If you are interested in a Jupyter notebook version of the code from the book, the author himself has created a wonderful [LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) repository.
+> [!TIP]
+> If you are interested in a Jupyter notebook version of the code from the book, the author himself has created a wonderful [LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) repository.
 
 ## Completion
 
