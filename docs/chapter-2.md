@@ -10,10 +10,14 @@ The preprocessor takes a big chunk of text and returns a list of strings (typica
 from scratch.tokenizers.preprocessor import Preprocessor
 
 preprocessor = Preprocessor()
-preprocessor.preprocess('Hello beautiful world!')
 
-# Returns
-['Hello', 'beautiful', 'world']
+preprocessor.preprocess('Hello beautiful world!')
+```
+
+This would return:
+
+```python
+['Hello', 'beautiful', 'world'] # preprocessor.preprocess('Hello beautiful world!')
 ```
 
 ### Tokenizers
@@ -40,8 +44,8 @@ tokenizer.decode([0, 1, 2, 0, 1])
 This would return:
 
 ```python
-[0, 1, 2, 0, 1]
-'I like what I like'
+[0, 1, 2, 0, 1] # tokenizer.encode('I like what I like')
+'I like what I like' # tokenizer.decode([0, 1, 2, 0, 1])
 ```
 
 #### Tiktoken Tokenizer
@@ -60,8 +64,8 @@ tokenizer.decode([40, 588, 644, 314, 588])
 This would return:
 
 ```python
-[40, 588, 644, 314, 588]
-'I like what I like'
+[40, 588, 644, 314, 588] # tokenizer.encode('I like what I like')
+'I like what I like' # tokenizer.decode([40, 588, 644, 314, 588])
 ```
 
 ### Dataset and Dataloader
@@ -127,27 +131,35 @@ dataloader = create_dataloader(
 for n, batch in enumerate(dataloader):
     start = batch[0].tolist()
     target = batch[1].tolist()
-    print("Batch", n + 1)
-    print("Start:", tokenizer.decode(start[0]), ">",
-        "Target:", tokenizer.decode(target[0]))
-    print("Start:", tokenizer.decode(start[1]), ">",
-        "Target:", tokenizer.decode(target[1]), "\n")
+    batch = n + 1
+    print("Batch", batch)
+    print(str(batch) + ".1", "Start:", tokenizer.decode(start[0]))
+    print(str(batch) + ".1", "Target:", tokenizer.decode(target[0]))
+    print(str(batch) + ".2", "Start:", tokenizer.decode(start[1]))
+    print(str(batch) + ".2", "Target:", tokenizer.decode(target[1]))
+    print()
 ```
 
 This code would print:
 
 ```
 Batch 1
-Start: This repository can be > Target:  repository can be installed
-Start:  repository can be installed > Target:  can be installed as
+1.1 Start: This repository can be
+1.1 Target:  repository can be installed
+1.2 Start:  repository can be installed
+1.2 Target:  can be installed as
 
 Batch 2
-Start:  can be installed as > Target:  be installed as a
-Start:  be installed as a > Target:  installed as a regular
+2.1 Start:  can be installed as
+2.1 Target:  be installed as a
+2.2 Start:  be installed as a
+2.2 Target:  installed as a regular
 
 Batch 3
-Start:  installed as a regular > Target:  as a regular Python
-Start:  as a regular Python > Target:  a regular Python project
+3.1 Start:  installed as a regular
+3.1 Target:  as a regular Python
+3.2 Start:  as a regular Python
+3.2 Target:  a regular Python project
 ```
 
 ### Embeddings
@@ -164,15 +176,15 @@ from scratch.embeddings.token_embeddings import TokenEmbeddings
 
 embedding_layer = TokenEmbeddings(vocab_size=50257, output_dim=256)
 random_input = randint(low=0, high=50257-1, size=(8, 4))
-embeddings = embedding_layer.embed(random_input)
+token_embeddings = embedding_layer.embed(random_input)
 
-embeddings.shape
+token_embeddings.shape
 ```
 
 This would return:
 
 ```python
-torch.Size([8, 4, 256])
+torch.Size([8, 4, 256]) # token_embeddings.shape
 ```
 
 #### Positional Embeddings
@@ -185,15 +197,15 @@ The coefficients of this layer will also be adjusted during the training phase.
 from scratch.embeddings.positional_embeddings import PositionalEmbeddings
 
 embedding_layer = PositionalEmbeddings(context_length=4, output_dim=256)
-embeddings = embedding_layer.embed()
+positional_embeddings = embedding_layer.embed()
 
-embeddings.shape
+positional_embeddings.shape
 ```
 
 This would return:
 
 ```python
-torch.Size([4, 256])
+torch.Size([4, 256]) # positional_embeddings.shape
 ```
 
 #### Input Embeddings
@@ -206,13 +218,13 @@ from scratch.embeddings.input_embeddings import InputEmbeddings
 
 embedding_layer = InputEmbeddings(vocab_size=50257, context_length=4, output_dim=256)
 random_input = randint(low=0, high=50257-1, size=(8, 4))
-embeddings = embedding_layer.embed(random_input)
+input_embeddings = embedding_layer.embed(random_input)
 
-embeddings.shape
+input_embeddingsembeddings.shape
 ```
 
 This would return:
 
 ```python
-torch.Size([8, 4, 256])
+torch.Size([8, 4, 256]) # input_embeddings.shape
 ```
