@@ -1,6 +1,6 @@
 from torch import tensor
-from .base_normalization import BaseNormalization
+from .base_normalizer import BaseNormalizer
 
-class AddOneNormalization(BaseNormalization):
+class AddOneNormalizer(BaseNormalizer):
     def normalize(self, input: tensor) -> tensor:
         return input / input.sum()

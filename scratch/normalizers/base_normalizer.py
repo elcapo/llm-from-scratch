@@ -1,5 +1,5 @@
 from torch import tensor
 
-class BaseNormalization:
+class BaseNormalizer:
     def normalize(self, input: tensor) -> tensor:
         pass

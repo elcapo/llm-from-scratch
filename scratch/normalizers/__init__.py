@@ -1,2 +1,2 @@
-from . import add_one_normalization
-from . import base_normalization
+from . import add_one_normalizer
+from . import base_normalizer
