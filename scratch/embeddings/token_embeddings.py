@@ -10,5 +10,5 @@ class TokenEmbeddings:
             self.vocab_size,
             self.output_dim)
     
-    def embed(self, input: tensor):
-        return self.embedding_layer(input)
+    def embed(self, inputs: tensor):
+        return self.embedding_layer(inputs)

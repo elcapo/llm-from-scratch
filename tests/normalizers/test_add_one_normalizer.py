@@ -3,10 +3,10 @@ from scratch.normalizers.add_one_normalizer import AddOneNormalizer
 
 def test_add_one_normalizer():
     # Prepare
-    input = tensor([.9544, 1.4950, 1.4754, .8434, .7070, 1.0865])
+    inputs = tensor([.9544, 1.4950, 1.4754, .8434, .7070, 1.0865])
     # Act
     normalizer = AddOneNormalizer()
-    normalized = normalizer.normalize(input)
+    normalized = normalizer.normalize(inputs)
     # Assert
     assert allclose(
         normalized,
