@@ -46,6 +46,7 @@ pip install -r requirements.txt
 ## Documentation
 
 - [Chapter 2: Working with text data](docs/chapter-2.md)
+- [Chapter 3: Coding attention mechanisms](docs/chapter-3.md)
 
 ## Tests
 
