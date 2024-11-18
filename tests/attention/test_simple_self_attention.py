@@ -69,7 +69,7 @@ def test_simple_self_attention_compute():
         [0.77, 0.25, 0.10],
         [0.05, 0.80, 0.55]])
     # Act
-    context_vectors = attention.compute(inputs)
+    context_vectors = attention(inputs)
     # Assert
     assert allclose(
         context_vectors[1],

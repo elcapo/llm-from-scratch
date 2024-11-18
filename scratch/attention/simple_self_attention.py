@@ -1,4 +1,4 @@
-from torch import empty, dot, tensor
+from torch import tensor
 from .base_attention import BaseAttention
 
 class SimpleSelfAttention(BaseAttention):
@@ -11,8 +11,7 @@ class SimpleSelfAttention(BaseAttention):
     def get_context_vectors(self, inputs: tensor, weights: tensor) -> tensor:
         return weights @ inputs
 
-    def compute(self, inputs: tensor) -> tensor:
-        scores = self.get_scores(inputs)
+    def forward(self, x):
+        scores = self.get_scores(x)
         weights = self.get_weights(scores)
-        return self.get_context_vectors(inputs, weights)
-
+        return self.get_context_vectors(x, weights)

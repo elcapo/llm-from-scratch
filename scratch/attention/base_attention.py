@@ -1,19 +1,11 @@
-from torch import tensor
+from torch.nn import Module
 from scratch.normalizers.base_normalizer import BaseNormalizer
 from scratch.normalizers.softmax_normalizer import SoftmaxNormalizer
 
-class BaseAttention:
+class BaseAttention(Module):
     def __init__(self, normalizer: BaseNormalizer = SoftmaxNormalizer()):
+        super().__init__()
         self.normalizer = normalizer
 
-    def get_scores(self, inputs: tensor) -> tensor:
-        pass
-    
-    def get_weights(self, scores: tensor) -> tensor:
-        pass
-    
-    def get_context_vectors(self, weights: tensor) -> tensor:
-        pass
-
-    def compute(self, inputs: tensor) -> tensor:
+    def forward(self, x):
         pass
