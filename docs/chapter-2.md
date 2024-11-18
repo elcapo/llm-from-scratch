@@ -176,7 +176,7 @@ from scratch.embeddings.token_embeddings import TokenEmbeddings
 
 embedding_layer = TokenEmbeddings(vocab_size=50257, output_dim=256)
 random_input = randint(low=0, high=50257-1, size=(8, 4))
-token_embeddings = embedding_layer.embed(random_input)
+token_embeddings = embedding_layer(random_input)
 
 token_embeddings.shape
 ```
@@ -197,7 +197,7 @@ The coefficients of this layer will also be adjusted during the training phase.
 from scratch.embeddings.positional_embeddings import PositionalEmbeddings
 
 embedding_layer = PositionalEmbeddings(context_length=4, output_dim=256)
-positional_embeddings = embedding_layer.embed()
+positional_embeddings = embedding_layer()
 
 positional_embeddings.shape
 ```
@@ -216,11 +216,14 @@ The input embeddings are the result of adding the results of the token embedding
 from torch import randint
 from scratch.embeddings.input_embeddings import InputEmbeddings
 
-embedding_layer = InputEmbeddings(vocab_size=50257, context_length=4, output_dim=256)
+embedding_layer = InputEmbeddings(
+    vocab_size=50257,
+    context_length=4,
+    output_dim=256)
 random_input = randint(low=0, high=50257-1, size=(8, 4))
-input_embeddings = embedding_layer.embed(random_input)
+input_embeddings = embedding_layer(random_input)
 
-input_embeddingsembeddings.shape
+input_embeddings.shape
 ```
 
 This would return:
