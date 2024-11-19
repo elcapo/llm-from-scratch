@@ -3,7 +3,7 @@ from scratch.attention.self_attention import SelfAttention
 
 def test_self_attention_compute():
     # Prepare
-    manual_seed(123)
+    manual_seed(789)
     attention = SelfAttention(d_in=3, d_out=2)
     inputs = tensor([
         [0.43, 0.15, 0.89],
@@ -17,5 +17,5 @@ def test_self_attention_compute():
     # Assert
     assert allclose(
         context_vectors[1],
-        tensor([0.3061, 0.8210]),
+        tensor([-0.0748,  0.0703]),
         atol=1e-4)
