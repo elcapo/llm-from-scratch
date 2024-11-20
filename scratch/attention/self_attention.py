@@ -5,7 +5,7 @@ from ..normalizers.base_normalizer import BaseNormalizer
 from ..normalizers.softmax_normalizer import SoftmaxNormalizer
 
 class SelfAttention(BaseAttention):
-    def __init__(self, d_in: int, d_out: int, qkv_bias=False, normalizer: BaseNormalizer = SoftmaxNormalizer()):
+    def __init__(self, d_in: int, d_out: int, qkv_bias=False, normalizer: BaseNormalizer=SoftmaxNormalizer()):
         super().__init__()
         self.normalizer = normalizer
         self.W_query = Linear(d_in, d_out, bias=qkv_bias)
