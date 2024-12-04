@@ -1,4 +1,4 @@
-from torch import equal, tensor
+import torch
 from scratch.dataloader import create_dataloader
 from .fixtures import the_veredict
 
@@ -14,5 +14,5 @@ def test_create_dataloader(the_veredict):
     data_iterator = iter(dataloader)
     first_batch = next(data_iterator)
     # Assert
-    assert equal(first_batch[0], tensor([[40, 367, 2885, 1464]]))
-    assert equal(first_batch[1], tensor([[367, 2885, 1464, 1807]]))
+    assert torch.equal(first_batch[0], torch.tensor([[40, 367, 2885, 1464]]))
+    assert torch.equal(first_batch[1], torch.tensor([[367, 2885, 1464, 1807]]))

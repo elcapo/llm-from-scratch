@@ -7,9 +7,9 @@
 As part of this chapter we'll make use of different normalizations. To orchestrate them all, there is a `BaseNormalizer` class which implements a single `normalize` method:
 
 ```python
-from torch import tensor
+import torch
 
-def normalize(self, inputs: tensor) -> tensor:
+def normalize(self, inputs: torch.tensor) -> torch.tensor:
     pass
 ```
 

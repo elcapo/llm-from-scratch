@@ -1,10 +1,9 @@
 import torch
-from torch import allclose, manual_seed, randint, tensor, Size
 from scratch.embeddings.positional_embeddings import PositionalEmbeddings
 
 def test_positional_embeddings_dimensions():
     # Prepare
-    manual_seed(123)
+    torch.manual_seed(123)
     vocab_size=50257
     output_dim=256
     max_length=4
@@ -12,20 +11,20 @@ def test_positional_embeddings_dimensions():
     batch_size=8
     # Act
     embedding_layer = PositionalEmbeddings(max_length, output_dim)
-    random_input = randint(low=0, high=vocab_size-1, size=(batch_size, context_length))
+    random_input = torch.randint(low=0, high=vocab_size-1, size=(batch_size, context_length))
     embeddings = embedding_layer()
     # Assert
-    assert embeddings.shape == Size([4, 256])
+    assert embeddings.shape == torch.Size([4, 256])
 
 def test_positional_embeddings():
     # Prepare
-    manual_seed(123)
+    torch.manual_seed(123)
     # Act
     embedding_layer = PositionalEmbeddings(context_length=2, output_dim=4)
     embeddings = embedding_layer()
     # Assert
-    expected = tensor([
+    expected = torch.tensor([
         [-0.1115,  0.1204, -0.3696, -0.2404],
         [-1.1969,  0.2093, -0.9724, -0.7550]
     ])
-    assert allclose(embeddings, expected, atol=1e-4)
+    assert torch.allclose(embeddings, expected, atol=1e-4)
