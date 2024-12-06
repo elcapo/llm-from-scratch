@@ -1,8 +1,8 @@
-from torch.nn import Embedding, Module
+import torch
 from .token_embeddings import TokenEmbeddings
 from .positional_embeddings import PositionalEmbeddings
 
-class InputEmbeddings(Module):
+class InputEmbeddings(torch.nn.Module):
     def __init__(self, vocab_size: int, context_length: int, output_dim: int):
         super().__init__()
         self.vocab_size = vocab_size
