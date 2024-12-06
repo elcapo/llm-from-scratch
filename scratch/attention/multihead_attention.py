@@ -1,5 +1,4 @@
-from torch import inf, ones, tensor, triu
-from torch.nn import Dropout, Linear
+import torch
 from .base_attention import BaseAttention
 from ..normalizers.base_normalizer import BaseNormalizer
 from ..normalizers.softmax_normalizer import SoftmaxNormalizer
@@ -21,14 +20,14 @@ class MultiHeadAttention(BaseAttention):
         self.num_heads = num_heads
         self.head_dim = d_out // num_heads
         self.normalizer = normalizer
-        self.W_query = Linear(d_in, d_out, bias=qkv_bias)
-        self.W_key = Linear(d_in, d_out, bias=qkv_bias)
-        self.W_value = Linear(d_in, d_out, bias=qkv_bias)
-        self.out_proj = Linear(d_out, d_out)
-        self.dropout = Dropout(dropout)
-        self.register_buffer('mask', triu(ones(context_length, context_length), diagonal=1))
+        self.W_query = torch.nn.Linear(d_in, d_out, bias=qkv_bias)
+        self.W_key = torch.nn.Linear(d_in, d_out, bias=qkv_bias)
+        self.W_value = torch.nn.Linear(d_in, d_out, bias=qkv_bias)
+        self.out_proj = torch.nn.Linear(d_out, d_out)
+        self.dropout = torch.nn.Dropout(dropout)
+        self.register_buffer('mask', torch.triu(torch.ones(context_length, context_length), diagonal=1))
 
-    def forward(self, x):
+    def forward(self, x: torch.tensor) -> torch.tensor:
         b, num_tokens, d_in = x.shape
         # Compute keys, queries and values
         keys = self.W_key(x)
@@ -45,7 +44,7 @@ class MultiHeadAttention(BaseAttention):
         # Compute the attention scores for each head
         scores = queries @ keys.transpose(2, 3)
         mask_bool = self.mask.bool()[:num_tokens, :num_tokens]
-        scores.masked_fill_(mask_bool, -inf)
+        scores.masked_fill_(mask_bool, -torch.inf)
         # Compute the attention weights
         weights = self.normalizer.normalize(scores / keys.shape[-1]**0.5)
         weights = self.dropout(weights)
