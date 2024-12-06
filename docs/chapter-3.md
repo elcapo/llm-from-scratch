@@ -144,4 +144,10 @@ context_vectors = attention(batch)
 
 ### References
 
-- [Attention is all you need](https://arxiv.org/abs/1706.03762) (2017) por Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser y Illia Polosukhin.
+#### Articles
+
+- [Attention is all you need](https://arxiv.org/abs/1706.03762) (2017) by Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser and Illia Polosukhin.
+
+#### Source Code
+
+- [Implementation of the multi-head attention mechanism](https://github.com/keras-team/keras/blob/master/keras/src/layers/attention/multi_head_attention.py) by Keras.
