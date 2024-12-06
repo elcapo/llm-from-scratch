@@ -144,4 +144,4 @@ context_vectors = attention(batch)
 
 ### References
 
-- [Attention is all you need](https://arxiv.org/abs/1706.03762) (2017)
+- [Attention is all you need](https://arxiv.org/abs/1706.03762) (2017) por Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser y Illia Polosukhin.
