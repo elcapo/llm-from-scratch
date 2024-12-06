@@ -47,6 +47,7 @@ pip install -r requirements.txt
 
 - [Chapter 2: Working with text data](docs/chapter-2.md)
 - [Chapter 3: Coding attention mechanisms](docs/chapter-3.md)
+- [Chapter 4: Implementing a GPT model from scratch](docs/chapter-4.md)
 
 ## Tests
 
