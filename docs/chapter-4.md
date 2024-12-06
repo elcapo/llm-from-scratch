@@ -6,6 +6,8 @@
 
 #### Transformers
 
+- [Encoder vs decoder models](https://www.youtube.com/watch?v=XdGeVzDiYgg) (2024) por Emily McMilin.
+- [The transformer architecture](https://www.youtube.com/watch?v=tstbZXNCfLY) (2021) por Sebastian Raschka.
 - [The transformer architecture](https://www.youtube.com/watch?v=GhdB7UMtGqs) (2024) por Donato Capitella.
 
 #### Shortcuts
