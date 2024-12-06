@@ -16,5 +16,5 @@ class SelfAttention(BaseAttention):
         queries = self.W_query(x)
         values = self.W_value(x)
         scores = queries @ keys.T
-        weights = self.normalizer.normalize(scores / keys.shape[-1]**0.5)
+        weights = self.normalizer(scores / keys.shape[-1]**0.5)
         return weights @ values

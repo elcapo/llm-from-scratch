@@ -1,5 +1,4 @@
-from torch import tensor
+import torch
 
-class BaseNormalizer:
-    def normalize(self, inputs: tensor) -> tensor:
-        pass
+class BaseNormalizer(torch.nn.Module):
+    pass

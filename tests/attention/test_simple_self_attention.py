@@ -3,7 +3,7 @@ from scratch.attention.simple_self_attention import SimpleSelfAttention
 
 def test_simple_self_attention_get_scores():
     # Prepare
-    attention = SimpleSelfAttention()
+    attention = SimpleSelfAttention(d_in=3)
     inputs = torch.tensor([
         [0.43, 0.15, 0.89],
         [0.55, 0.87, 0.66],
@@ -21,7 +21,7 @@ def test_simple_self_attention_get_scores():
 
 def test_simple_self_attention_get_weights():
     # Prepare
-    attention = SimpleSelfAttention()
+    attention = SimpleSelfAttention(d_in=3)
     inputs = torch.tensor([
         [0.43, 0.15, 0.89],
         [0.55, 0.87, 0.66],
@@ -40,7 +40,7 @@ def test_simple_self_attention_get_weights():
 
 def test_simple_self_attention_get_context_vectors():
     # Prepare
-    attention = SimpleSelfAttention()
+    attention = SimpleSelfAttention(d_in=3)
     inputs = torch.tensor([
         [0.43, 0.15, 0.89],
         [0.55, 0.87, 0.66],
@@ -60,7 +60,7 @@ def test_simple_self_attention_get_context_vectors():
 
 def test_simple_self_attention_compute():
     # Prepare
-    attention = SimpleSelfAttention()
+    attention = SimpleSelfAttention(d_in=3)
     inputs = torch.tensor([
         [0.43, 0.15, 0.89],
         [0.55, 0.87, 0.66],

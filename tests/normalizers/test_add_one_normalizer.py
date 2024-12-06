@@ -6,7 +6,7 @@ def test_add_one_normalizer():
     inputs = torch.tensor([.9544, 1.4950, 1.4754, .8434, .7070, 1.0865])
     # Act
     normalizer = AddOneNormalizer()
-    normalized = normalizer.normalize(inputs)
+    normalized = normalizer(inputs)
     # Assert
     assert torch.allclose(
         normalized,

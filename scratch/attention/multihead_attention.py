@@ -46,7 +46,7 @@ class MultiHeadAttention(BaseAttention):
         mask_bool = self.mask.bool()[:num_tokens, :num_tokens]
         scores.masked_fill_(mask_bool, -torch.inf)
         # Compute the attention weights
-        weights = self.normalizer.normalize(scores / keys.shape[-1]**0.5)
+        weights = self.normalizer(scores / keys.shape[-1]**0.5)
         weights = self.dropout(weights)
         # Compute the context vectors
         context_vectors = (weights @ values).transpose(1, 2)

@@ -24,13 +24,13 @@ from scratch.normalizers.add_one_normalizer import AddOneNormalizer
 
 normalizer = AddOneNormalizer()
 inputs = tensor([1., 8., 1.])
-normalizer.normalize(inputs)
+normalizer(inputs)
 ```
 
 This would return:
 
 ```python
-tensor([0.1000, 0.8000, 0.1000]) # normalizer.normalize(inputs)
+tensor([0.1000, 0.8000, 0.1000]) # normalizer(inputs)
 ```
 
 #### Softmax
@@ -42,13 +42,13 @@ from scratch.normalizers.softmax_normalizer import SoftmaxNormalizer
 
 normalizer = SoftmaxNormalizer()
 inputs = tensor([1., 8., 1.])
-normalizer.normalize(inputs)
+normalizer(inputs)
 ```
 
 This would return:
 
 ```python
-tensor([9.1022e-04, 9.9818e-01, 9.1022e-04]) # normalizer.normalize(inputs)
+tensor([9.1022e-04, 9.9818e-01, 9.1022e-04]) # normalizer(inputs)
 ```
 
 ### Attention Mechanisms
