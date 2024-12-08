@@ -6,6 +6,7 @@ from .normalizers.layer_normalization import LayerNorm
 class GptModel(torch.nn.Module):
     def __init__(self, config: GptConfig):
         super().__init__()
+        self.config = config
         self.token_embeddings = torch.nn.Embedding(config.vocab_size, config.embedding_dimension)
         self.positional_embeddings = torch.nn.Embedding(config.vocab_size, config.embedding_dimension)
         self.dropout_embeddings = torch.nn.Dropout(config.drop_rate)
