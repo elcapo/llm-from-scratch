@@ -1,5 +1,6 @@
 import torch
 from ..activation.gelu import Gelu
+from ..gpt_config import GptConfig
 
 class FeedForward(torch.nn.Module):
     def __init__(self, config: GptConfig):
