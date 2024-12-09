@@ -1,3 +1,4 @@
+import torch
 from typing import List
 from .preprocessor import Preprocessor
 
@@ -10,3 +11,11 @@ class BaseTokenizer:
     
     def decode(self, tokens: List[int]) -> str:
         pass
+
+    def text_to_tokens(self, text: str) -> torch.tensor:
+        encoded = self.encode(text)
+        return torch.tensor(encoded).unsqueeze(0)
+
+    def tokens_to_text(self, tokens: torch.tensor) -> str:
+        flat = tokens.squeeze(0)
+        return self.decode(flat.tolist())
