@@ -6,6 +6,7 @@
 
 #### Transformers
 
+- [Visualizing transformers and attention](https://www.youtube.com/watch?v=KJtZARuO3JY) (2024) by Grant Sanderson.
 - [Encoder vs decoder models](https://www.youtube.com/watch?v=XdGeVzDiYgg) (2024) by Emily McMilin.
 - [The transformer architecture](https://www.youtube.com/watch?v=tstbZXNCfLY) (2021) by Sebastian Raschka.
 - [The transformer architecture](https://www.youtube.com/watch?v=GhdB7UMtGqs) (2024) by Donato Capitella.
