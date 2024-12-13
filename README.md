@@ -15,7 +15,7 @@ It is part of my follow up of the sessions of the study group organized by [Sant
 - [x] Chapter 2: Working with text data
 - [x] Chapter 3: Coding attention mechanisms
 - [x] Chapter 4: Implementing a GPT model from scratch
-- [~] Chapter 5: Pretraining on unlabeled data
+- [ ] Chapter 5: Pretraining on unlabeled data
 - [ ] Chapter 6: Fine-tuning for classification
 - [ ] Chapter 7: Fine-tuning to follow instructions
 
