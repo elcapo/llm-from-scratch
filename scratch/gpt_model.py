@@ -8,7 +8,7 @@ class GptModel(torch.nn.Module):
         super().__init__()
         self.config = config
         self.token_embeddings = torch.nn.Embedding(config.vocab_size, config.embedding_dimension)
-        self.positional_embeddings = torch.nn.Embedding(config.vocab_size, config.embedding_dimension)
+        self.positional_embeddings = torch.nn.Embedding(config.context_length, config.embedding_dimension)
         self.dropout_embeddings = torch.nn.Dropout(config.drop_rate)
         self.transformer_blocks = torch.nn.Sequential(
             *[TransformerBlock(config) for _ in range(config.layer_count)])
