@@ -49,7 +49,7 @@ pip install -r requirements.txt
 - [Chapter 3: Coding attention mechanisms](docs/chapter-3.md)
 - [Chapter 4: Implementing a GPT model from scratch](docs/chapter-4.md)
 - [Chapter 5: Pretraining on unlabeled data](docs/chapter-5.md)
-  - Extra: [Jupyter Notebook](chapter-5.ipynb)
+  - Extra: [Jupyter Notebook](pretraining.ipynb)
 
 ## Tests
 
