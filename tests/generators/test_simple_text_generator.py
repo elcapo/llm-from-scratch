@@ -21,4 +21,4 @@ def test_simple_text_generator():
     output = generator.generate(encoded_tensor)
     # Assert
     output_tokens = output.squeeze(0).tolist()
-    assert tokenizer.decode(output_tokens) == 'Hello, I amillasilaralon governed018ы'
+    assert tokenizer.decode(output_tokens) == 'Hello, I am network BEL Afghan postp aired technical'

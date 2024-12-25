@@ -2,6 +2,7 @@ from typing import Optional
 import torch
 from ..gpt_model import GptModel
 from ..tokenizers.base_tokenizer import BaseTokenizer
+from ..generators.base_generator import BaseGenerator
 from ..generators.simple_text_generator import SimpleTextGenerator
 from .batch_loss import BatchLoss
 from .loader_loss import LoaderLoss
@@ -15,6 +16,7 @@ class SimpleTrainer:
         optimizer: torch.optim.Optimizer,
         tokenizer: BaseTokenizer,
         device: Optional[str] = None,
+        generator: Optional[BaseGenerator] = None
     ):
         if device is None:
             device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -27,7 +29,9 @@ class SimpleTrainer:
         self.device = device
         self.batch_loss = BatchLoss(model, device)
         self.loader_loss = LoaderLoss(model, device)
-        self.generator = SimpleTextGenerator(model, max_new_tokens=50)
+        if generator is None:
+            generator = SimpleTextGenerator(model, max_new_tokens=50)
+        self.generator = generator
 
     def train(self, num_epochs: int, eval_freq: int, eval_iter: int, start_context: str):
         train_losses, validation_losses, track_tokens_seen = [], [], []
@@ -35,6 +39,11 @@ class SimpleTrainer:
 
         for epoch in range(num_epochs):
             self.model.train()
+
+            if global_step % eval_freq == 0:
+                print()
+                print("Epoch", epoch + 1)
+
             for input_batch, target_batch in self.train_loader:
                 self.optimizer.zero_grad()
                 loss = self.batch_loss.calc(input_batch, target_batch)
@@ -48,7 +57,8 @@ class SimpleTrainer:
                     train_losses.append(train_loss)
                     validation_losses.append(validation_loss)
                     track_tokens_seen.append(tokens_seen)
-                    print("Epoch", epoch + 1)
+
+                    print()
                     print("- Step", global_step)
                     print("- Train loss", train_loss)
                     print("- Evaluation loss", validation_loss)
@@ -72,5 +82,5 @@ class SimpleTrainer:
         with torch.no_grad():
             tokens = self.generator.generate(encoded)
         decoded_text = self.tokenizer.tokens_to_text(tokens)
-        print(decoded_text.replace("\n", " "))
+        print("- Generated: " + decoded_text.replace("\n", " "))
         self.model.train()

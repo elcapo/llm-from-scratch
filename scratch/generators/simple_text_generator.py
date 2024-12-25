@@ -1,7 +1,8 @@
 import torch
 from ..gpt_model import GptModel
+from .base_generator import BaseGenerator
 
-class SimpleTextGenerator:
+class SimpleTextGenerator(BaseGenerator):
     def __init__(self, model: GptModel, max_new_tokens: int):
         self.model = model
         self.max_new_tokens = max_new_tokens

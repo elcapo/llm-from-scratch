@@ -1,8 +1,9 @@
 from typing import Optional
 import torch
 from ..gpt_model import GptModel
+from .base_generator import BaseGenerator
 
-class ProbabilisticTextGenerator:
+class ProbabilisticTextGenerator(BaseGenerator):
     def __init__(
         self,
         model: GptModel,
