@@ -64,7 +64,10 @@ class SimpleTrainer:
                     print("- Evaluation loss", validation_loss)
             
             self.generate_and_print_sample(start_context)
-        
+
+        print()
+        print("Training finished")
+
         return train_losses, validation_losses, track_tokens_seen
 
     def evaluate_model(self, eval_iter: int):
