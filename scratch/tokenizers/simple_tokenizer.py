@@ -8,8 +8,8 @@ class SimpleTokenizer(BaseTokenizer):
     Implements a simple text tokenizer.
     """
     def __init__(self, source: List[str] = [], preprocessor: Preprocessor = Preprocessor()):
+        source.extend(["<|endoftext|>", "<|unk|>"])
         vocabulary = sorted(set(source))
-        vocabulary.extend(["<|endoftext|>", "<|unk|>"])
         self.str_to_int = {s: i for i, s in enumerate(vocabulary)}
         self.int_to_str = {i: s for i, s in enumerate(vocabulary)}
         self.preprocessor = preprocessor
