@@ -15,7 +15,7 @@ It is part of my follow up of the sessions of the study group organized by [Sant
 - [x] Chapter 2: Working with text data
 - [x] Chapter 3: Coding attention mechanisms
 - [x] Chapter 4: Implementing a GPT model from scratch
-- [ ] Chapter 5: Pretraining on unlabeled data
+- [x] Chapter 5: Pretraining on unlabeled data
 - [ ] Chapter 6: Fine-tuning for classification
 - [ ] Chapter 7: Fine-tuning to follow instructions
 
@@ -49,7 +49,8 @@ pip install -r requirements.txt
 - [Chapter 3: Coding attention mechanisms](docs/chapter-3.md)
 - [Chapter 4: Implementing a GPT model from scratch](docs/chapter-4.md)
 - [Chapter 5: Pretraining on unlabeled data](docs/chapter-5.md)
-  - Extra: [Jupyter Notebook](pretraining.ipynb)
+  - Jupyter Notebook: [Pretraining](pretraining.ipynb)
+  - Jupyter Notebook: [12 Word World](12-word-world.ipynb)
 
 ## Tests
 
