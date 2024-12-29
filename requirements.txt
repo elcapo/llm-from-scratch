@@ -29,6 +29,7 @@ httpx==0.28.0
 idna==3.10
 iniconfig==2.0.0
 ipykernel==6.29.5
+ipympl==0.9.5
 ipython==8.30.0
 ipywidgets==8.1.5
 isoduration==20.11.0
