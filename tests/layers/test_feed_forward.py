@@ -11,6 +11,7 @@ def test_feed_forward():
         embedding_dimension = 4,
         head_count = 2,
         layer_count = 2,
+        forward_layer_size = 4,
         drop_rate = 0.1,
         qkv_bias = True)
     feed_forward = FeedForward(gpt_small)
