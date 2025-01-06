@@ -27,6 +27,11 @@ class ProbabilisticTextGenerator(BaseGenerator):
                 logits = self.model(idx_cond)
             logits = logits[:, -1, :]
 
+            if self.model.debug:
+                print()
+                print("Input:", idx)
+                print("Debug bag:", self.model.debug_bag)
+
             if self.top_k is not None:
                 top_logits, _ = torch.topk(logits, self.top_k)
                 min_val = top_logits[:, -1]
